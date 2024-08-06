@@ -2,7 +2,7 @@ import React from "react";
 import { Skeleton } from "./Skeleton";
 import { User } from "./User";
 
-export const Users = ({ items, isLoading }) => {
+export const Users = ({ elements, isLoading }) => {
   return (
     <>
       {isLoading ? (
@@ -13,7 +13,9 @@ export const Users = ({ items, isLoading }) => {
         </div>
       ) : (
         <ul className="users-list">
-          <User />
+          {elements.map((user) => (
+            <User key={user.id} {...user} />
+          ))}
         </ul>
       )}
     </>

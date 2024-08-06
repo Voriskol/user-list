@@ -6,10 +6,21 @@ import { Search } from "./components/Search";
 // Тут список пользователей: https://jsonplaceholder.typicode.com/users
 
 function App() {
+  const [users, setUsers] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data))
+      .catch((error) => {
+        console.log(error);
+        alert("Произошла ошибка");
+      });
+  }, []);
   return (
     <div className="App">
       <Search />
-      <Users />
+      <Users elements={users} />
     </div>
   );
 }
