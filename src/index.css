@@ -12,59 +12,43 @@ body {
   box-sizing: border-box;
   font-family: 'Inter', sans-serif;
   outline: none;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
   max-width: 1100px;
-  height: 600px;
-  margin: 50px auto;
+  height: 100vh;
+  margin: auto;
   background-color: #fff;
   border-radius: 30px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   padding: 40px;
 }
 
-.search {
-  position: relative;
-}
-
-.search input {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 15px;
-  border-radius: 15px;
-  width: 100%;
-  font-size: 16px;
-  padding-left: 50px;
-}
-
-.search svg {
-  width: 18px;
-  height: 18px;
-  position: absolute;
-  top: 17px;
-  left: 20px;
-  opacity: 0.3;
-}
-
 .users-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   list-style: none;
-  padding: 0;
-  margin: 0;
   overflow: auto;
-  height: calc(100% - 130px);
-  margin-top: 30px;
+  max-height: 100%;
 }
 
 .users-list li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 15px;
+  box-shadow: -4px 4px 6px -3px rgba(34, 60, 80, 0.2);
 }
 
 .user-info {
   display: flex;
   align-items: center;
+  background-color: aliceblue;
+  border-radius: 8px;
+  width: 100%;
+  padding: 5px;
 }
 
 
@@ -76,7 +60,6 @@ body {
 }
 
 .users-list li h3 {
-  margin: 0;
   font-weight: 900;
   font-family: 'Merriweather', serif;
   margin-left: 15px;
@@ -89,7 +72,6 @@ body {
   display: flex;
   align-items: center;
   font-size: 14px;
-  margin: 0;
   color: rgba(0, 0, 0, 0.5);
   margin-top: 3px;
 }
@@ -102,4 +84,32 @@ body {
 
 .skeleton-list svg {
   margin-bottom: 15px;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 16px;
+  color: red;
+
+}
+
+.error h1 {
+  border: 1px solid red;
+  border-radius: 20px;
+  padding: 40px;
+  background-color: aliceblue;
+}
+
+
+@media(max-width: 600px) {
+  .users-list li p {
+    font-size: 12px;
+  }
+
+  .users-list li h3 {
+    font-size: 14px;
+  }
 }

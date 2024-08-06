@@ -10,6 +10,8 @@ export const Users = ({ elements, isLoading }) => {
           <Skeleton />
           <Skeleton />
           <Skeleton />
+          <Skeleton />
+          <Skeleton />
         </div>
       ) : (
         <ul className="users-list">

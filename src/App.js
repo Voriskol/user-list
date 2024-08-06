@@ -1,26 +1,31 @@
 import React from "react";
+import axios from "axios";
 import "./index.css";
 import { Users } from "./components/Users";
-import { Search } from "./components/Search";
-
-// Тут список пользователей: https://jsonplaceholder.typicode.com/users
+import { Error } from "./components/Error/Error";
 
 function App() {
   const [users, setUsers] = React.useState([]);
+  const [isLoading, setLoading] = React.useState(true);
+  const [error, setError] = React.useState(false);
 
   React.useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data))
-      .catch((error) => {
-        console.log(error);
-        alert("Произошла ошибка");
+    try {
+      const apiUrl = "https://jsonplaceholder.typicode.com/users";
+      axios.get(apiUrl).then((response) => {
+        setUsers(response.data);
       });
+    } catch (e) {
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
   }, []);
+
   return (
     <div className="App">
-      <Search />
-      <Users elements={users} />
+      <Users elements={users} isLoading={isLoading} />
+      <Error elements={users} error={error} />
     </div>
   );
 }
