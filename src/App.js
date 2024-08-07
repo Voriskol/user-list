@@ -17,6 +17,7 @@ function App() {
       });
     } catch (e) {
       setError(true);
+      console.log(e);
     } finally {
       setLoading(false);
     }
@@ -25,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <Users elements={users} isLoading={isLoading} />
-      <Error elements={users} error={error} />
+      <Error error={error} />
     </div>
   );
 }
